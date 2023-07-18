@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 
 async function connect() {
   try {
-    await mongoose.connect(
-      'mongodb+srv://bhattaraiprabesh:gtuAgvsPg2KHlBUC@cluster0.bwmfvsr.mongodb.net/',
-      { useNewUrlParser: true }
-    );
+    await mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true });
+    console.log('Connected to MongoDB:', `${process.env.DB_HOST}`);
   } catch (error) {
     console.error(error, '::Error connection to mongodb');
   }
